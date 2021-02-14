@@ -10,7 +10,7 @@
             <input type="text" id="username" class="form-control"
                    ngModel name="username" required >
           </div>
-          <button class="btn btn-default" type="button">Suggest an Username</button>
+          <button class="btn btn-default" type="button" (click)="suggestUserName()" >Suggest an Username</button>
           <div class="form-group">
             <label for="email">Mail</label>
             <input type="email" id="email" class="form-control"
@@ -33,8 +33,30 @@
           </textarea>
         </div>
         <p> Your reply: {{ answer }} </p>
+        <div class="radio" *ngFor="let gender of genders">
+          <lable>
+            <input
+              type="radio"
+              name="gender"
+              ngModel
+              required
+              [value]="gender">
+            {{ gender }}
+          </lable>
+        </div>
         <button [disabled]="!f.valid" class="btn btn-primary" type="submit">Submit</button>
       </form>
+    </div>
+  </div>
+  <hr>
+  <div class="row" *ngIf="submitted" >
+    <div class="col-xs-12">
+      <h3>Your Data</h3>
+      <p> Username: {{ user.username }} </p>
+      <p> Mail: {{ user.email }} </p>
+      <p> Secret Question: Your First{{ user.secretQuestion }} </p>
+      <p> Answer {{ user.answer }} </p>
+      <p> Gender {{ user.gender }}</p>
     </div>
   </div>
 </div>
