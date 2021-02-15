@@ -27,8 +27,6 @@
               class="help-block"> Please Enter Valid Email </span>
           </div>
         </div>
-
-
         <div class="radio" *ngFor="let gender of genders">
           <label>
             <input
@@ -37,6 +35,15 @@
               [value]="gender">{{ gender }}
           </label>
         </div>
+        <div formArrayName="hobbies" >
+          <h4> Hobbies </h4>
+          <button class="btn btn-default" type="button" (click)="onAddHobby()" > Add Hobby </button>
+          <div class="form-group"
+               *ngFor="let hobbyControl of signupForm.get('hobbies'); let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
+          </div>
+        </div>
+
         <span
           *ngIf="!signupForm.valid && signupForm.touched"
           class="help-block"> Please Enter Valid Data </span>
