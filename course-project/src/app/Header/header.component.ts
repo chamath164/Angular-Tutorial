@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
 
 
 @Component ({
@@ -8,10 +8,4 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 export class HeaderComponent {
   collapsed = true;
-
-  @Output() featureSelected = new EventEmitter<string>();
-  // tslint:disable-next-line:typedef
-  onSelect(features: string){
-    this.featureSelected.emit(features);
-  }
 }
