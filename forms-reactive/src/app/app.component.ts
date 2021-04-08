@@ -17,8 +17,8 @@ export class AppComponent implements OnInit{
         'username': new FormControl(null, Validators.required),
         'email': new FormControl(null, [Validators.required, Validators.email]),
       }),
-      'gender': new FormControl('male'),
-      'hobbies': new FormArray([])
+      gender: new FormControl('male'),
+      hobbies: new FormArray([])
     });
   }
   // tslint:disable-next-line:typedef
@@ -27,7 +27,8 @@ export class AppComponent implements OnInit{
   }
 
   onAddHobby(){
-    const control = new FormArray(null, Validators.required);
-    (<FormArray>this.signupForm.get('hobbies')).push(control);
+    const control = new FormControl(null, Validators.required);
+    (<FormArray> this.signupForm.get('hobbies')).push(control);
   }
+
 }
