@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import {increment, decrement, reset} from './counter.action';
+import {increment, decrement, reset, counterIncrement, changeChannelName} from './counter.action';
 import {initialState} from './counter.state';
 
 // tslint:disable-next-line:variable-name
@@ -22,6 +22,18 @@ const _counterReducer = createReducer(initialState,
       counter: 0,
     };
   }),
+  on(counterIncrement, (state, action) => {
+    return {
+      ...state,
+      counter: state.counter + action.value,
+    };
+  }),
+  on(changeChannelName, (state) => {
+    return {
+      ...state,
+      channelName: 'Modified Web Dev',
+    };
+  })
 );
 
 export function counterReducer(state, action): any {

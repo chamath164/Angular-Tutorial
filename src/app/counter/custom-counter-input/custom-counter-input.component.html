@@ -1,1 +1,17 @@
-<p>custom-counter-input works!</p>
+<div class="my-3 text-center">
+  {{channelName$ | async}}
+</div>
+<div class="text-center">
+  <mat-form-field appearance="outline">
+    <mat-label>Enter Value</mat-label>
+    <input matInput type="number" class="example-center-align" [(ngModel)]="value">
+  </mat-form-field>
+</div>
+<div class ="text-center">
+  <button mat-raised-button color="primary" (click)="onAddCount()">counter</button>
+</div>
+<div class="my-3 text-center">
+  <button mat-raised-button color="accent" (click)="changeChannelName()">change channel</button>
+</div>
+
+
