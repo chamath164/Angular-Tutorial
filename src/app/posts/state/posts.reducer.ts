@@ -1,6 +1,7 @@
 import {createReducer, on} from '@ngrx/store';
 import {initialState} from './posts.state';
-import {addPost} from './posts.actions';
+import {addPost, updatePost} from './posts.actions';
+import {state} from '@angular/animations';
 
 // tslint:disable-next-line:variable-name
 const _postsReducer = createReducer(initialState,
@@ -10,6 +11,15 @@ const _postsReducer = createReducer(initialState,
     return {
       ...state,
       posts: [...state.posts, post],
+    };
+  }),
+  on(updatePost, (state, action) => {
+    const updatedPosts = state.posts.map((post) => {
+      return action.post.id === post.id ? action.post : post;
+    });
+    return {
+      ...state,
+      posts: updatedPosts,
     };
   })
 );

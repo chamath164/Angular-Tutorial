@@ -2,14 +2,16 @@
   <div class="col-md-12">
     <h2 class="my-3 text-center">Update Post</h2>
     <hr>
-    <form [formGroup]="postForm">
+    <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
       <div class="mb-3">
         <label>Title</label>
         <input type="text" class="form-control" formControlName="title">
+        <div>{{showTitleErrors()}}</div>
       </div>
       <div class="mb-3">
         <label>Description</label>
         <textarea class="form-control" formControlName="description"></textarea>
+        <div>{{showDescriptionErrors()}}</div>
       </div>
       <div class="mb-3 text-center">
         <button mat-raised-button color="accent" type="submit">Update Post</button>
