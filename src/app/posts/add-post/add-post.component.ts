@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Post} from '../../models/posts.model';
+import {Store} from '@ngrx/store';
+import {addPost} from '../state/posts.actions';
 
 @Component({
   selector: 'app-add-post',
@@ -9,7 +12,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class AddPostComponent implements OnInit {
   postForm: FormGroup;
 
-  constructor() { }
+  constructor(private store: Store) {
+  }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
@@ -18,13 +22,6 @@ export class AddPostComponent implements OnInit {
       description: new FormControl(null,
         [Validators.required, Validators.minLength(10)])
     });
-  }
-
-  onAddPost(): void {
-    if (!this.postForm.valid) {
-      return;
-    }
-    console.log(this.postForm);
   }
 
   // tslint:disable-next-line:typedef
@@ -51,5 +48,16 @@ export class AddPostComponent implements OnInit {
         return 'Title should be minimum 6 characters required!';
       }
     }
+  }
+
+  onAddPost(): void {
+    if (!this.postForm.valid) {
+      return;
+    }
+    const post: Post = {
+      title: this.postForm.value.title,
+      description: this.postForm.value.description,
+    };
+    this.store.dispatch(addPost({post}));
   }
 }

@@ -18,6 +18,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { HeaderComponent } from './shared/component/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { AddPostComponent } from './posts/add-post/add-post.component';
+import { EditPostComponent } from './posts/edit-post/edit-post.component';
 
 
 
@@ -32,6 +33,7 @@ import { AddPostComponent } from './posts/add-post/add-post.component';
     HeaderComponent,
     PostListComponent,
     AddPostComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,
